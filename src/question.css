@@ -1,0 +1,11 @@
+.quest {
+    display: none;
+    text-align: center;
+  }
+  .quest.active {
+    display: block;
+  }
+  .answer {
+    text-align: left;
+  }
+  
