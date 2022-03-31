@@ -1,5 +1,5 @@
 const defaultState = {
-    name: "s",
+    name: "",
     surname: "",
     city: "",
     country: ""
