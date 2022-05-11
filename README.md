@@ -1,4 +1,4 @@
-#SPA "Тестирование"
+# SPA "Тестирование"
 
 Для установки локально и запуска приложения ведите git clone git@github.com:belokrylets/testing.git
 
@@ -6,7 +6,14 @@ cd testing
 
 npm start
 
-так же можете открыть приложение в так же можете открыть приложение в по ссылке https://f3qrl6.csb.app/
+Стэк:
+  - React
+  - redux
+  - redux-thunk
+  - redux-devtools-extension
+  - react-bootstrap
+  - lodash
+  - axios
 
-неболььшое React приложжение, в котором реализовано тест на 10 вопросов
-
+## Описание
+Тестирование состоит из 2х блоков по 7 вопросов. Вопросы загружаются с сервера, путем get запроса.

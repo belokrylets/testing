@@ -1,0 +1,40 @@
+.questions {
+  display: flex;
+  justify-content: center;
+  width: 600px;
+  height: 300px;
+  border: 1px solid grey;
+  margin-top: 30px;
+}
+
+
+.block {
+  display: none;
+  text-align: center;
+}
+.block.active {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+ 
+}
+.quest {
+    display: none;
+    text-align: center;
+  }
+  .quest.active {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    padding-top: 20px;
+  }
+  .answer {
+    text-align: left;
+  }
+  .form-check {
+    text-align: start;
+  }
+  

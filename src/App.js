@@ -1,70 +1,42 @@
-import { useState } from "react";
-import { listQuestions } from "./listQuestions";
-import Qestions from "./components/Qestnins";
-import Registration from "./components/Registration";
-import Result from "./components/Result";
-import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useEffect } from "react";
+import Questions from "./components/questions/Questions";
+import Registration from "./components/registration/Registration";
+import Result from "./components/result/Result";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import fetchQuestions from "./asynsAction/fetchQuestions";
+import Intro from "./components/intro/Intro";
+import { Container } from "react-bootstrap";
 
-export default function App() {
+const App = () => {
+  const dispatch = useDispatch();
 
-  const statePage = useSelector(state => state.statePage.statePage)
-  console.log(statePage)
-  const [user, setUser] = useState({
-    name: "",
-    surname: "",
-    city: "",
-    country: ""
-  });
-  const [answer, setAnswer] = useState("");
-  const [qestions] = useState(listQuestions);
-  const [state, setState] = useState("registration");
-  const [result, setResult] = useState(0);
-  const [currentIdx, setCurrentIdx] = useState(0);
+  useEffect(() => {
+    dispatch(fetchQuestions());
+  }, []);
 
-  const handleChange = (e) => {
-    setAnswer(e.target.value);
-  };
-  const answerSubmit = (e) => {
-    e.preventDefault();
-
-    if (currentIdx > qestions.length - 2) {
-      setState("result");
-    }
-    setCurrentIdx(currentIdx + 1);
-    if (answer === "correctAnswer") {
-      setResult(result + 1);
-    }
-    setAnswer("");
-  };
-
+  const statePage = useSelector((state) => state.statePage.statePage);
 
   const rendering = (statePage) => {
     switch (statePage) {
+      case "intro":
+        return <Intro />;
       case "registration":
-        return (
-          <Registration />
-        );
+        return <Registration />;
       case "testing":
-        return (
-          <Qestions
-            answer={answer}
-            qestions={qestions}
-            idx={currentIdx}
-            answerSubmit={answerSubmit}
-            handleChange={handleChange}
-          />
-        );
+        return <Questions />;
       case "result":
-        return <Result result={result} user={user} />;
+        return <Result />;
       default:
-        throw new Error(`${state} не нвйден`);
+        throw new Error(`${statePage} не нвйден`);
     }
   };
   return (
-    <div className="App">
-      <h1>Тестирование</h1>
-      {rendering(statePage)}
-    </div>
+    <Container fluid="xxl">
+      <div className="App">{rendering(statePage)}</div>
+    </Container>
   );
-}
+};
+
+export default App;
