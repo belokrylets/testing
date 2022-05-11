@@ -24,11 +24,11 @@ const Intro = () => {
         <li>Redux devtools extension</li>
         <li>React bootstrap</li>
         <li>Axios</li>
-        <li>React Router Dom</li></ul>
-        <p>Тестирование состоит из 2х блоков по 7 вопросов. Вопросы загружаются с сервера, путем get запроса.</p>
-        <Button onClick={buttonGO} variant='primary'>Приступить к тестированию</Button>
+      </ul>
+      <p>Тестирование состоит из 2х блоков по 7 вопросов. Вопросы загружаются с сервера, путем get запроса.</p>
+      <Button onClick={buttonGO} variant='primary'>Приступить к тестированию</Button>
     </div>
-  
+
   );
 }
 
